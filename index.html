@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Circle</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .circle {
+      width: 70vw;
+      height: 70vw;
+      border-radius: 50%;
+      background-color: red;
+      transition: background-color 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle" id="circle"></div>
+
+  <script>
+    const circle = document.getElementById('circle');
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    // Change color every 1 second
+    let interval = setInterval(() => {
+      circle.style.backgroundColor = getRandomColor();
+    }, 1000);
+
+    // Change color immediately on touch
+    circle.addEventListener('touchstart', () => {
+      circle.style.backgroundColor = getRandomColor();
+    });
+  </script>
+</body>
+</html>
